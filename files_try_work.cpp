@@ -274,3 +274,75 @@ int main() {
     return 0;
 }
 */
+
+/* Несколько блоков catch
+void Foo(int value) {
+
+    if (value<0){ throw "число меньше 0 !!!"; }
+
+    if (value == 0) { throw exception("число равно 0 !!!"); }
+
+    if (value == 1) { throw 1; }
+
+    cout << "Переменная = " << value << endl;
+}
+
+int main() {
+
+    setlocale(LC_ALL, "ru");
+
+    try{
+        Foo(1);
+    }
+    catch (const exception &ex){
+        cout << "Блок 1 Мы поймали " << ex.what() << endl;
+    }
+    catch(const char *ex){
+        cout << "Блок 2 Мы поймали " << ex << endl;
+    }
+    catch (...) {
+        cout << "Что то пошло не так!" << endl;
+    }
+
+    return 0;
+}
+*/
+
+/* Создание собственного класса исключений
+class MyException : public exception {
+public:
+    MyException(const char *msg, int dataState):exception(msg) {
+        this->dataState = dataState;
+    }
+    int GetDataState() { return dataState; }
+private:
+    int dataState;
+};
+
+void Foo(int value) {
+
+    if (value < 0) { throw exception("число меньше 0 !!!"); }
+
+    if (value == 1) { throw MyException("число равно 1 !!!",value); }
+
+    cout << "Переменная = " << value << endl;
+}
+
+int main() {
+
+    setlocale(LC_ALL, "ru");
+
+    try{
+        Foo(-1);
+    }
+    catch (MyException &ex){
+        cout << "Блок 1 Мы поймали " << ex.what() << endl;
+        cout << "Состояние данных " << ex.GetDataState() << endl;
+    }
+    catch (exception& ex) {
+    cout << "Блок  Мы поймали " << ex.what() << endl;
+    }
+
+    return 0;
+}
+*/ 
