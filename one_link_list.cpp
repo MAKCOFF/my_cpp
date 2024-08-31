@@ -1,3 +1,52 @@
+//#include <iostream>
+//#include <string>
+//#include <windows.h>
+//#include <fstream>
+//
+//using namespace std;
+//
+///* Работа с файлами. Создание, запись, чтение */
+//// fstream
+//// ifstream - чтение
+//// ofsteaam - запись
+//
+//
+///* Создание собственного класса исключений */
+//
+//class MyException : public exception {
+//public:
+//    MyException(const char *msg):exception(msg) {
+//
+//    }
+//private:
+//};
+//
+//void Foo(int value) {
+//
+//    if (value<0){ throw "число меньше 0 !!!"; }
+//
+//    if (value == 0) { throw exception("число равно 0 !!!"); }
+//
+//    if (value == 1) { throw MyException("число равно 1 !!!"); }
+//
+//    cout << "Переменная = " << value << endl;
+//}
+//
+//int main() {
+//    SetConsoleOutputCP(CP_UTF8);
+//    //setlocale(LC_ALL, "ru");
+//
+//    try{
+//        Foo(1);
+//    }
+//    catch (MyException &ex){
+//        cout << "Блок 1 Мы поймали " << ex.what() << endl;
+//    }
+//
+//
+//    return 0;
+//}
+
 #include <iostream>
 #include <windows.h>
 
@@ -51,6 +100,34 @@ private:
 };
 
 template<typename T>
+List<T>::List() {
+    Size = 0;
+    head = nullptr;
+}
+
+template<typename T>
+List<T>::~List(){
+    clear();
+}
+
+template<typename T>
+T& List<T>::operator[](int index){
+
+    int counter = 0;
+
+    Node<T>* current = this->head;
+
+    while (current!=nullptr){
+
+        if (counter == index) {
+            return current->data;
+        }
+        current = current->pNext;
+        counter++;
+    }
+}
+
+template<typename T>
 void List<T>::pop_back() {
     removeAt(Size-1);
 }
@@ -101,17 +178,6 @@ void List<T>::clear() {
 }
 
 template<typename T>
-List<T>::List() {
-    Size = 0;
-    head = nullptr;
-}
-
-template<typename T>
-List<T>::~List(){
-    clear();
-}
-
-template<typename T>
 void List<T>::pop_front(){
 
     Node<T> *temp = head;
@@ -136,23 +202,6 @@ void List<T>::push_back(T data){
     }
 
     Size++;
-}
-
-template<typename T>
-T& List<T>::operator[](int index){
-
-    int counter = 0;
-
-    Node<T>* current = this->head;
-
-    while (current!=nullptr){
-
-        if (counter == index) {
-            return current->data;
-        }
-        current = current->pNext;
-        counter++;
-    }
 }
 
 int main() {
