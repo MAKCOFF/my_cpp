@@ -1,4 +1,5 @@
 #include <iostream>
+#include <list>
 #include <vector>
 #include <windows.h>
 
@@ -123,8 +124,79 @@ int main() {
 
 /* STL - List
 
+template<typename T>
+void PrintList(const list<T> &lst){
+    for (auto i = lst.cbegin(); i != lst.cend(); ++i){
+        cout << *i << endl;
+    }
+}
 
+int main() {
+
+    SetConsoleOutputCP(CP_UTF8);
+
+    list<int> myList = {99,99,15,99,64,99,99,979,99};
+    //list<int> myList2 = {22,44,61,585,22};
+    //myList.push_back(5);
+    //myList.push_front(151);
+
+    //myList.sort();
+    //myList.pop_back();
+    //myList.pop_front();
+
+    //cout << myList.size() << endl;
+
+    //myList.unique();
+    //myList.reverse();
+
+    //auto it = myList.begin();
+
+    //++it;
+
+    //advance(it,3);
+
+    //myList.insert(it,111);
+
+    //myList.erase(it);
+
+    //myList.remove(99);
+
+    //myList.assign(3,6545);
+
+    // должна копировать список, но чет не работает
+    //myList.assign(myList2.begin(),myList2.begin());
+
+    PrintList(myList);
+
+    //myList.clear();
+
+    return 0;
+}
  * */
+
+/* Итераторы STL prefix vs postfix
+
+int main() {
+
+    SetConsoleOutputCP(CP_UTF8);
+
+    list<int>::iterator it;
+
+    it++;
+
+    // Считается что такая форма быстрее
+    ++it;
+
+    return 0;
+}
+*/
+
+template<typename T>
+void print_list(const list<T> &lst){
+    for (auto i = lst.cbegin(); i != lst.cend(); ++i){
+        cout << *i << endl;
+    }
+}
 
 int main() {
 
