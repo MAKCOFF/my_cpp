@@ -1,6 +1,7 @@
 #include <iostream>
-#include <list>
+//#include <list>
 #include <vector>
+#include <forward_list>
 #include <windows.h>
 
 using namespace std;
@@ -122,7 +123,7 @@ int main() {
 }
  * */
 
-/* STL - List
+/* STL - List - двусвязный список
 
 template<typename T>
 void PrintList(const list<T> &lst){
@@ -191,18 +192,52 @@ int main() {
 }
 */
 
-template<typename T>
-void print_list(const list<T> &lst){
-    for (auto i = lst.cbegin(); i != lst.cend(); ++i){
-        cout << *i << endl;
-    }
-}
+/* Цикл for (:) - range-based циклы
 
 int main() {
 
     SetConsoleOutputCP(CP_UTF8);
 
+//    int arr[] = {5,11,94,99,44};
+//
+//    // При передаче параметра по ссылке & работает быстрее, не копирует и появляется доступ к данным в массиве
+//    for (auto &i: arr) {
+//        i = -1;
+//        cout << i << endl;
+//    }
 
+    list<int> lst = {5,11,94,99,44};
+
+    for (const auto &i: lst) {
+        cout << i << endl;
+    }
 
     return 0;
 }
+*/
+
+/* forward_list -  односвязный список
+
+int main() {
+
+    SetConsoleOutputCP(CP_UTF8);
+
+    forward_list<int> fl = {131,94,494};
+    fl.push_front(1);
+    fl.push_front(4);
+
+    forward_list<int>::iterator it = fl.begin();
+
+    //fl.insert_after(it,999);
+    //fl.erase_after(it);
+
+//    it++;
+//    cout << *it << endl;
+
+    for (auto i : fl) {
+        cout << i << endl;
+    }
+
+    return 0;
+}
+*/
