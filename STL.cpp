@@ -1,7 +1,8 @@
 #include <iostream>
 //#include <list>
-#include <vector>
-#include <forward_list>
+//#include <vector>
+//#include <forward_list>
+#include <array>
 #include <windows.h>
 
 using namespace std;
@@ -241,3 +242,51 @@ int main() {
     return 0;
 }
 */
+
+/* STL - array - статический массив
+int main() {
+
+    SetConsoleOutputCP(CP_UTF8);
+
+    array<int, 4> arr = {1,94,77,9};
+
+    //arr.fill(-1);
+
+    //cout << arr.front() << endl;
+    //cout << arr.back() << endl;
+
+    for (auto i : arr) {
+        cout << i << endl;
+    }
+
+    return 0;
+}
+
+*/
+
+/* STL - Операторы сравнения
+
+int main() {
+
+    SetConsoleOutputCP(CP_UTF8);
+
+    array<int, 4> arr = {1,94,77, 9};
+
+    array<int, 4> arr2 = {1,94,77};
+
+    bool result = (arr > arr2);
+
+    cout << result << endl;
+
+    return 0;
+}
+*/
+
+int main() {
+
+    SetConsoleOutputCP(CP_UTF8);
+
+    
+
+    return 0;
+}
