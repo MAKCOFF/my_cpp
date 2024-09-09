@@ -2,7 +2,8 @@
 //#include <list>
 //#include <vector>
 //#include <forward_list>
-#include <array>
+//#include <array>
+#include <deque>
 #include <windows.h>
 
 using namespace std;
@@ -277,6 +278,28 @@ int main() {
     bool result = (arr > arr2);
 
     cout << result << endl;
+
+    return 0;
+}
+*/
+
+/* STL - deque динамический массив массивов(стандартно по 3 элемента)
+
+int main() {
+
+    SetConsoleOutputCP(CP_UTF8);
+
+    deque<int> dq = {1,9,94};
+
+    //dq.push_back(3);
+    //dq[1];
+
+    // итератор произвольного доступа, двигается в обоих направлениях
+    //deque<int>::iterator it;
+
+    for (auto i: dq) {
+        cout << i << endl;
+    }
 
     return 0;
 }
