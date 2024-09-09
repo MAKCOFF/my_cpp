@@ -3,10 +3,14 @@
 //#include <vector>
 //#include <forward_list>
 //#include <array>
-#include <deque>
+//#include <deque>
+//#include <set>
+#include <map>
 #include <windows.h>
 
 using namespace std;
+
+//typedef std::vector<int> int_vector;
 
 /* Библиотека стандартных шаблонов STL
  * VECTOR
@@ -303,6 +307,111 @@ int main() {
 
     return 0;
 }
+*/
+
+/* STL - SET | MULTISET Ассоциативные контейнеры (бинарное дерево)
+    SET
+            5
+           / \
+          1  12
+         / \
+        -1 4
+
+int main() {
+
+    SetConsoleOutputCP(CP_UTF8);
+
+    // Хранит только уникальные элементы, одинаковые значения не добавляются
+
+    set<int> mySet = {5,1,12,4,-1};
+
+    //set<int> mySet;
+
+    //mySet.insert(5);
+    //mySet.insert(1);
+    //mySet.insert(12);
+
+    //mySet.insert(4);
+    //mySet.insert(-1);
+
+    //mySet.insert(1);
+    //mySet.insert(1);
+
+    //for (int i = 0; i < 20; ++i) {
+    //    mySet.insert(rand()%10);
+    //}
+
+    // возвращает итератор на найденный объект, если не нашел, возвращает пустую ссылку mySet.end()
+    //auto it = mySet.find(12);
+
+    //int value;
+
+    //cin >> value;
+
+    //if (mySet.find(value) != mySet.end()){
+    //    cout << "Число " << value << " найдено!" << endl;
+    //}else{
+    //    cout << "Число " << value << " не найдено!" << endl;
+    //}
+
+    // myset.erase(элемент) - удаляет переданный элемент. Возвращает логический 0 если: элемент не получилось удалить.
+    // Возвращает логическую 1 если: элемент получилось удалить.
+    //auto result = mySet.erase(66);
+
+    auto result = mySet.insert(5);
+
+    //cout << result << endl;
+
+    for (auto &item: mySet) {
+        cout << item << endl;
+    }
+
+    return 0;
+}
+MULTISET
+
+int main() {
+
+    SetConsoleOutputCP(CP_UTF8);
+
+    // Позволяет хранить одинаковые элементы
+    multiset<int> myMultiset = {5,5,1,12,4,-1};
+
+    // mymultiset.lower_bound(значение) - вернет итератор указывающий на самое первое значение которое мы передали.
+    //auto it1 = myMultiset.lower_bound(5);
+
+    // mymultiset.upper_bound(значение) - вернет итератор на тот элемент,
+    // который идет ПОСЛЕ того значение, которое мы передали, и которое не повторяет переданное значение.
+    //auto it2 = myMultiset.upper_bound(5);
+
+    // mymultiset.equale_range(значение) - вернет диапазон значений от .lower_bound до .upper_bound.
+    auto a = myMultiset.equal_range(5);
+
+    for (auto &item: myMultiset) {
+        cout << item << endl;
+    }
+
+    return 0;
+}
+*/
+
+/* typedef
+
+typedef std::vector<int> int_vector;
+
+int main() {
+
+    SetConsoleOutputCP(CP_UTF8);
+
+    int_vector myVector;
+
+    return 0;
+}
+*/
+
+/* STL - MAP | MULTIMAP ассоциативные контейнеры 
+
+
 */
 
 int main() {
