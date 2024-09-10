@@ -5,6 +5,7 @@
 //#include <array>
 //#include <deque>
 //#include <set>
+#include <string>
 #include <map>
 #include <windows.h>
 
@@ -81,7 +82,7 @@ int main() {
     // Итератор, указатель на 1й элемент массива vector
     //it = myVector.begin();
 
-    //*it = 1000;
+    // *it = 1000;
 
     // арифметика указателя
     //it++;
@@ -409,9 +410,79 @@ int main() {
 }
 */
 
-/* STL - MAP | MULTIMAP ассоциативные контейнеры 
+/* STL - MAP | MULTIMAP ассоциативные контейнеры, бинарное дерево ключ/значение(словарь)
 
+            3 м
+           /   \
+          1 т   22 к
+            \
+            2 н
 
+int main() {
+
+    SetConsoleOutputCP(CP_UTF8);
+
+ MAP - хранит только уникальные ключи
+
+    //std::pair<int, string> p(1,"телефон");
+
+    //cout << p.first << "\t" << p.second << endl;
+
+    map<int, string> myMap;
+
+    myMap.emplace(3,"монитор");
+
+    myMap.insert(make_pair(1, "телефон"));
+
+    myMap.insert(pair<int, string>(2,"ноутбук"));
+
+    myMap.emplace(22,"клавиатура");
+
+    //auto it = myMap.find(3);
+    //
+    //if (it != myMap.end()){
+    //    cout << it->second << endl;
+    //}else{
+    //    cout << "Ключ не найден!" << endl;
+    //}
+
+    //auto res = myMap.emplace(22,"dfsgsd");
+
+    map<string, int> myMap;
+
+    myMap.emplace("Петя", 1313);
+    myMap.emplace("Маша", 222);
+    myMap.emplace("Миша", 4441);
+
+    myMap["Петя"] = 23;
+
+    cout << myMap["Петя"] << endl;
+
+    // добавляет, если пара с данным ключом не существует
+    //myMap["Вася"] = 9797;
+
+    try{
+        myMap.at("Вася") = 3;
+    }
+    catch (const std::exception&ex) {
+        cout << ex.what() << endl;
+        cout << "Ключ отсутствует в контейнере map" << endl;
+    }
+
+    myMap.erase("Петя");
+
+ MULTIMAP - может хранить одинаковые ключи
+
+    multimap<string, int> myMultimap;
+
+    myMultimap.emplace("Петя", 1313);
+    myMultimap.emplace("Маша", 222);
+    myMultimap.emplace("Миша", 4441);
+
+    myMultimap.emplace("Миша", 223);
+
+    return 0;
+}
 */
 
 int main() {
