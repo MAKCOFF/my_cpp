@@ -1,12 +1,13 @@
 #include <iostream>
-//#include <list>
-//#include <vector>
+#include <list>
+#include <vector>
 //#include <forward_list>
 //#include <array>
-//#include <deque>
+#include <deque>
 //#include <set>
 #include <string>
-#include <map>
+//#include <map>
+#include <stack>
 #include <windows.h>
 
 using namespace std;
@@ -485,11 +486,44 @@ int main() {
 }
 */
 
+/* Адаптер stack
+
 int main() {
 
     SetConsoleOutputCP(CP_UTF8);
 
-    
+    //stack<int> st;
+    stack<int,list<int>> st;
+
+    st.push(2);
+    st.push(43);
+    st.push(3);
+    st.emplace(9);
+
+    //cout << st.top() << endl;
+
+    //st.pop();
+
+    //cout << st.top() << endl;
+
+    auto a = st._Get_container();
+
+    //cout << a[2] << endl;
+
+    while (!st.empty()){
+        cout << st.top() << endl;
+        st.pop();
+    }
+
+    return 0;
+}
+*/
+
+int main() {
+
+    SetConsoleOutputCP(CP_UTF8);
+
+
 
     return 0;
 }
