@@ -7,7 +7,8 @@
 //#include <set>
 #include <string>
 //#include <map>
-#include <stack>
+//#include <stack>
+#include <queue>
 #include <windows.h>
 
 using namespace std;
@@ -517,6 +518,47 @@ int main() {
 
     return 0;
 }
+*/
+
+/* Адаптеры контейнеров
+
+    // queue (не работает с vector)
+
+    queue<int,list<int>> q;
+
+    q.push(56);
+    q.push(4);
+    q.push(7);
+    q.push(99);
+
+    //cout << q.back() << endl;
+
+    //cout << q.front() << endl;
+    //q.pop();
+    //cout << q.front() << endl;
+
+    auto a = q._Get_container();
+
+    while (!q.empty()){
+        cout << q.front() << endl;
+        q.pop();
+        cout << "count " << q.size() << endl;
+    }
+
+    // priority_queue (работает с вектором, сортирует элементы по возрастанию)
+
+    priority_queue<int,vector<int>> q;
+
+    q.push(56);
+    q.push(4);
+    q.push(7);
+    q.push(99);
+
+    while (!q.empty()){
+        cout << q.top() << endl;
+        q.pop();
+        cout << "count " << q.size() << endl;
+    }
 */
 
 int main() {
