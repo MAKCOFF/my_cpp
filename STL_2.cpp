@@ -73,9 +73,6 @@ int main(){
 
  std::find, std::find_if, std::find_if_not
 
-
-*/
-
 #include <iostream>
 #include <algorithm>
 #include <vector>
@@ -114,11 +111,91 @@ int main(){
         Person("Petya", 10)
     };
 
+    //vector<int> v = {9,4,94,6,1,3,7};
 
-    for (const auto& i : people) {
-        cout << "Имя:\t" << i.name << "\tбаллы:\t" << i.score << endl;
+    //auto result = find(v.begin(),v.end(),0);
+    //
+    //if (result == v.end()){
+    //    cout << "Is found nothing" << endl;
+    //}else{
+    //    cout << "Is found!" << endl;
+    //}
+
+    //auto result = find_if(v.begin(),v.end(), [](int a){
+    //    //return  a % 2 == 0;  // проверка на четность
+    //    //return  a % 2 != 0;  // проверка на нечетность
+    //    //return  a < 0;
+    //    return  a > 0;
+    //});
+    //
+    //if (result == v.end()){
+    //    cout << "Is found nothing!" << endl;
+    //}else{
+    //    cout << "Is found!" << endl;
+    //}
+
+    //auto result = find_if_not(v.begin(),v.end(), [](int a){
+    //    //return  a % 2 == 0;  // проверка на четность
+    //    //return  a % 2 != 0;  // проверка на нечетность
+    //    return  a < 0;
+    //    //return  a > 0;
+    //});
+    //
+    //if (result == v.end()){
+    //    cout << "Is found nothing!" << endl;
+    //}else{
+    //    cout << "Is found!" << endl;
+    //}
+
+    auto  result = find_if(people.begin(),people.end(), [](const Person &p) {
+        //return p.name == "Masha";
+        //return p.score == 10 && p.name == "Petya";
+        return p.score == 11 || p.name == "Sergey";
+    });
+
+    if (result == people.end()){
+        cout << "Is found nothing!" << endl;
+    }else{
+        cout << "Is found!" << endl;
     }
 
     return 0;
 }
+*/
 
+/* STL Поиск
+    std::copy, std::copy_if
+
+
+*/
+
+#include <iostream>
+#include <algorithm>
+#include <vector>
+#include <string>
+#include <windows.h>
+
+using namespace std;
+
+class Person{
+public:
+    Person(string name, double score){
+        this->name = name;
+        this->score = score;
+    }
+
+    bool operator()(const Person &p){
+        return p.score > 180;
+    }
+
+    string name;
+    double score;
+};
+
+int main() {
+    SetConsoleOutputCP(CP_UTF8);
+
+    
+
+    return 0;
+}
