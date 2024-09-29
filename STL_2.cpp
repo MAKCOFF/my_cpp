@@ -166,6 +166,75 @@ int main(){
 /* STL Поиск
     std::copy, std::copy_if
 
+ #include <iostream>
+#include <algorithm>
+#include <vector>
+#include <string>
+#include <windows.h>
+
+using namespace std;
+
+class Person{
+public:
+    Person(string name, double score, int age){
+        this->name = name;
+        this->score = score;
+        this->age = age;
+    }
+
+    bool operator()(const Person &p){
+        return p.score > 180;
+    }
+
+    string name;
+    double score;
+    int age;
+};
+
+int main() {
+    SetConsoleOutputCP(CP_UTF8);
+
+    vector<Person> people {
+            Person("Vasya", 181, 20),
+            Person("Petya", 30, 30),
+            Person("Masha", 179, 45),
+            Person("Dasha", 200, 22),
+            Person("Katya", 198, 25),
+            Person("Andrey", 50, 53),
+            Person("Sergey", 150, 33),
+            Person("Ivan", 129, 31),
+            Person("Petya", 10, 42)
+    };
+
+    vector<Person> result;
+
+    //copy(people.begin(),people.end(), back_inserter(result));
+
+    copy_if(people.begin(),people.end(), back_inserter(result), [](const Person &p){
+        //return p.name == "Ivan";
+        //return p.score < 100;
+        //return p.age > 25 && p.score > 140;
+        return p.age > 25;
+    });
+
+    sort(result.begin(),result.end(),[](const Person &p1, const Person &p2){
+        return p1.age < p2.age;
+    });
+
+    cout << "Всего элементов: \t" << result.size() << endl;
+    for (auto i : result) {
+        cout << "Имя: " << i.name << "\tбаллы: " << i.score <<"\tвозраст: " << i.age << endl;
+    }
+
+    return 0;
+}
+
+*/
+
+/* STL Поиск
+  Удаление элемента 
+    std::remove, std::remove_if
+
 
 */
 
@@ -179,9 +248,10 @@ using namespace std;
 
 class Person{
 public:
-    Person(string name, double score){
+    Person(string name, double score, int age){
         this->name = name;
         this->score = score;
+        this->age = age;
     }
 
     bool operator()(const Person &p){
@@ -190,12 +260,25 @@ public:
 
     string name;
     double score;
+    int age;
 };
 
 int main() {
     SetConsoleOutputCP(CP_UTF8);
 
+    vector<Person> people {
+            Person("Vasya", 181, 20),
+            Person("Petya", 30, 30),
+            Person("Masha", 179, 45),
+            Person("Dasha", 200, 22),
+            Person("Katya", 198, 25),
+            Person("Andrey", 50, 53),
+            Person("Sergey", 150, 33),
+            Person("Ivan", 129, 31),
+            Person("Petya", 10, 42)
+    };
     
+
 
     return 0;
 }
