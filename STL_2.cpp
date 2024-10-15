@@ -232,11 +232,8 @@ int main() {
 */
 
 /* STL Поиск
-  Удаление элемента 
+  Удаление элемента
     std::remove, std::remove_if
-
-
-*/
 
 #include <iostream>
 #include <algorithm>
@@ -277,6 +274,55 @@ int main() {
             Person("Ivan", 129, 31),
             Person("Petya", 10, 42)
     };
+    
+    vector<int> v = {5,9,1,46,4,9,4};
+    // Возвращает итератор на первый элемент в коллекции для удаления
+    auto res = remove(v.begin(),v.end(),9);
+    v.erase(res, v.end());
+
+
+    people.erase(remove_if(people.begin(), people.end(), [](const Person &p){
+        return p.score < 150 || p.age > 25;
+    }), people.end());
+
+    cout << "Всего элементов:\t" << people.size() << endl;
+
+    for (const auto& i : people) {
+        cout << "Имя: " << i.name << "\tбаллы: " << i.score <<"\tвозраст: " << i.age << endl;
+    }
+
+    string str = "Текст с несколькими   пробелами!";
+    cout << str << endl;
+
+    str.erase(remove(str.begin(),str.end(), ' '), str.end());
+
+    cout << str << endl;
+
+
+    return 0;
+}
+*/
+
+/* STL 
+    Поиск наибольшего элемента
+
+
+*/
+
+#include <iostream>
+#include <algorithm>
+#include <vector>
+#include <list>
+#include <string>
+#include <windows.h>
+
+using namespace std;
+
+
+
+int main() {
+    SetConsoleOutputCP(CP_UTF8);
+
     
 
 
