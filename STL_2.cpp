@@ -274,7 +274,7 @@ int main() {
             Person("Ivan", 129, 31),
             Person("Petya", 10, 42)
     };
-    
+
     vector<int> v = {5,9,1,46,4,9,4};
     // Возвращает итератор на первый элемент в коллекции для удаления
     auto res = remove(v.begin(),v.end(),9);
@@ -303,11 +303,8 @@ int main() {
 }
 */
 
-/* STL 
+/* STL
     Поиск наибольшего элемента
-
-
-*/
 
 #include <iostream>
 #include <algorithm>
@@ -323,7 +320,127 @@ using namespace std;
 int main() {
     SetConsoleOutputCP(CP_UTF8);
 
-    
+    vector<int> v = {10,1,-55,11,13,58};
+
+    list<int> lst = {4,7,77,-3,44,74};
+
+    const int SIZE = 6;
+
+    int arr[SIZE] = {10,1,-55,11,13,58};
+
+    auto res = max_element(v.begin(), v.end());
+
+    auto result = max_element(lst.begin(), lst.end());
+
+    auto result2 = max_element(arr,arr+SIZE);
+
+    cout << *result2 << endl;
+
+    return 0;
+}
+*/
+
+/* STL
+    Поиск наименьшего элемента и гибридный мин-макс
+
+#include <iostream>
+#include <algorithm>
+#include <vector>
+#include <list>
+#include <string>
+#include <windows.h>
+
+using namespace std;
+
+
+
+int main() {
+    SetConsoleOutputCP(CP_UTF8);
+
+    vector<int> v = {10,1,-55,11,13,58};
+
+    list<int> lst = {4,7,77,-3,44,74};
+
+    const int SIZE = 6;
+
+    int arr[SIZE] = {10,1,-55,11,13,58};
+
+    //auto result = min_element(arr,arr+SIZE);
+
+    //auto result = min_element(v.begin(),v.end());
+
+    auto result = minmax_element(lst.begin(),lst.end());
+
+    cout << *result.second << "\t" << *result.first << endl;
+
+    return 0;
+}
+*/
+
+/* STL
+    Сумма элементов, произведение, сумма четных элементов и т.д.
+
+#include <iostream>
+#include <algorithm>
+#include <vector>
+#include <numeric>
+#include <string>
+#include <windows.h>
+
+using namespace std;
+
+
+
+int main() {
+    SetConsoleOutputCP(CP_UTF8);
+
+    //vector<int> v = {2,3,4};
+    int v []= {2,3,4};
+
+    // 3‑й параметр, для суммы - стартовое значение, к которому прибавить результат суммы всех элементов
+    //auto result = accumulate(begin(v),end(v), 0);
+
+    // 3-й параметр в 1 для умножения элементов между собой, 4-й параметр ручное определение работы алгоритма
+    auto result = accumulate(begin(v),end(v), 0, [](int a, int b){
+        //return a * b;
+
+        if (b%2 == 0){
+            return a + b;
+        }else{
+            return a;
+        }
+    });
+
+    auto result2 = accumulate(next(begin(v)),end(v), to_string(v[0]), [](string a, int b){
+        return a + "-" + to_string(b);
+    });
+
+    cout << result2 << endl;
+
+    return 0;
+}
+*/
+
+/* STL
+    Сравнить две последовательности - equal и mismatch
+
+
+*/
+
+#include <iostream>
+#include <algorithm>
+#include <vector>
+#include <list>
+
+#include <windows.h>
+
+using namespace std;
+
+
+
+int main() {
+    SetConsoleOutputCP(CP_UTF8);
+
 
 
     return 0;
